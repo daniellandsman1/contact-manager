@@ -3,18 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Button Click Example</title>
+    <title>InternLink</title>
     <!-- Link to the CSS file -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Istok Web font family -->
+    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <h1>Click the Button!</h1>
-    <button id="myButton">Click Me</button>
+    <!-- put website inside this div -->
+    <div class="container">
+        <div class="carousel"></div>
+        <div class="loginContainer">
+            <h1>InternLink</h1>
+            <div class="login">
+                <form action="/" method="/">
+                    <input id = "username" type="text" name="username" placeholder="Username" required>
+                    <input id = "password" type="password" name="password" placeholder="Password" required>
+
+                    <button class="loginButton" type="submit">Login</button>
+                </form>
+                
+                <div class="signUpSection">
+                    <p class = "signUpPrompt">Don't have an account?</p>
+                    <hr>
+                    <a href="/" class="createAccountPageButton">Create account</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div> 
     <!-- Link to the JavaScript file -->
     <script src="scripts.js"></script>
-    <title>Hello World</title>
-</head>
-<body>
-    <h1>Hello, World!</h1>
+
+
 </body>
 </html>
