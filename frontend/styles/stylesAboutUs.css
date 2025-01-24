@@ -1,0 +1,159 @@
+/* General reset to remove margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Make sure all elements with potential large sizes stay within the viewport */
+.image-grid, .header, .dropdown-content {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Center the container on the page */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between; /* Distribute elements on both sides */
+    align-items: center; /* Vertically align items */
+    width: 100vw; /* Full width */
+    background-color: #333; /* Dark background */
+    padding: 10px; /* Padding around the header */
+    color: #fff; /* White text */
+    font-family: 'Istok Web', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Left section containing logo and title */
+.header-left {
+    display: flex;
+    align-items: center; /* Vertically center logo and text */
+    gap: 10px; /* Space between the logo and text */
+}
+
+.header-text {
+    font-size: 40px;
+}
+
+.logo img {
+    width: 50px; /* Size of the image */
+    height: 50px;
+    border-radius: 50%; /* Make the image circular */
+}
+
+.menu select {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dropdown {
+    position:relative;
+    display: inline-block;
+}
+
+/* Dropdown container */
+.dropdown-content {
+    display: none; /* Initially hidden */
+    position: absolute; /* Positioned relative to the dropdown */
+    background-color: #f9f9f9; /* Background color */
+    width: 100px; /* Full width */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    z-index: 1;
+    border-radius: 4px; /* Optional: rounded corners */
+}
+
+/* Dropdown links */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px; /* Space inside the items */
+    text-decoration: none; /* Remove underline */
+    display: block; /* Ensures full width links */
+    width: 100%; /* Full width of the parent container */
+    box-sizing: border-box; /* Ensures the padding is part of the width */
+}
+
+/* Hover effect for the links */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block; /* Make the dropdown visible on hover */
+    height: fit-content;
+}
+
+/* Dropdown button */
+.dropbtn {
+    background-color: #4f3d3d;
+    color: white;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Main header title styling */
+.header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* The grid container */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(3, auto); /* Adjust grid rows for image blocks */
+    gap: 20px; /* Space between items */
+    width: 80%; /* Optional: Adjust width */
+}
+
+/* Individual image containers */
+.image-item {
+    text-align: center; /* Center the image and text inside the item */
+}
+
+/* Individual images */
+.image-grid img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Optional: Rounds edges of images */
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    border: 2px solid #ccc;
+}
+
+/* Smaller text under each image */
+.image-text {
+    font-family: 'Istok Web', sans-serif;
+    font-size: 14px; /* Smaller font size */
+    color: #666; /* A light gray color for the text */
+    margin-top: 8px; /* Add some space above the text */
+}
+
+/* Styling for the text between image rows */
+.text-between {
+    grid-column: span 3; /* Ensures text spans across all 3 columns */
+    font-family: 'Istok Web', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0; /* Space above and below text */
+}
+
