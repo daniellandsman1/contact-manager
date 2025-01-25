@@ -12,6 +12,11 @@
     max-width: 100%;
 }
 
+html, body {
+    overflow: hidden; /* Disable vertical and horizontal scrolling */
+    height: 100%;     /* Ensure the body fills the entire viewport height */
+}
+
 /* Center the container on the page */
 body {
     display: flex;
@@ -26,7 +31,8 @@ body {
     display: flex;
     justify-content: space-between; /* Distribute elements on both sides */
     align-items: center; /* Vertically align items */
-    width: 100vw; /* Full width */
+    /*width: 100vw; /* Full width */
+    height: 10vh;
     background-color: #333; /* Dark background */
     padding: 10px; /* Padding around the header */
     color: #fff; /* White text */
@@ -42,12 +48,19 @@ body {
 }
 
 .header-text {
-    font-size: 40px;
+    font-size: calc(0.5 * 6vh); /* Set font size relative to header's height */
+    line-height: 1; /* Remove extra spacing inside the text */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Ensure no overflow outside boundaries */
+    text-overflow: ellipsis; /* Add ellipsis for overflow scenarios */
+    padding-top: 11%;
 }
 
 .logo img {
-    width: 50px; /* Size of the image */
-    height: 50px;
+    height: 90%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    display: block;
     border-radius: 50%; /* Make the image circular */
 }
 
@@ -62,19 +75,25 @@ body {
 }
 
 .dropdown {
-    position:relative;
-    display: inline-block;
+    position: relative;
+    display: flex; /* Make the dropdown a flex container */
+    align-items: center; /* Center the button vertically */
+    justify-content: center; /* Center content horizontally, if needed */
+    height: 100%; /* Make dropdown container fill the header height */
+    /*padding: 40px 0; /* Add 10px padding above and below */
 }
 
 /* Dropdown container */
 .dropdown-content {
     display: none; /* Initially hidden */
     position: absolute; /* Positioned relative to the dropdown */
+    right: 0;
+    top: 100%;
     background-color: #f9f9f9; /* Background color */
-    width: 100px; /* Full width */
+    min-width: 160px;
+    /*width: 100px; /* Full width */
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Shadow effect */
     z-index: 1;
-    border-radius: 4px; /* Optional: rounded corners */
 }
 
 /* Dropdown links */
@@ -100,19 +119,33 @@ body {
 
 /* Dropdown button */
 .dropbtn {
-    background-color: #4f3d3d;
-    color: white;
-    padding: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    text-align: center;
+    width: 80%; /* Set width to 20% of the header height */
+    height: 80%; /* Height matches the header */
+    font-size: 1.5em; /* Adjust font size proportionally */
+    display: flex; /* Use flex to center the text */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    background-color: #4f3d3d; /* Button background */
+    color: white; /* Text color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    text-align: center; /* Ensure text is centered */
+    box-sizing: border-box; /* Account for padding and border in size calculation */
+    aspect-ratio: 1 / 1; /* Forces width and height to be equal, making the button square */
 }
 
 /* Main header title styling */
 .header h1 {
-    font-size: 24px;
+    font-size: calc(0.5 * 50%);
     font-weight: bold;
+    text-align: center; /* Center the text within its space */
+    white-space: nowrap; /* Prevent the text from wrapping */
+    overflow: hidden; /* Hide any overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    max-width: 50%; /* Ensure text stays within half the header width */
+    line-height: 1.2; /* Adjust line height for a more compact look */
+    padding: 5px; /* Add some spacing inside the text area */
+    box-sizing: border-box; /* Include padding in the width calculation */
 }
 
 /* The grid container */
@@ -120,7 +153,8 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
     grid-template-rows: repeat(3, auto); /* Adjust grid rows for image blocks */
-    gap: 20px; /* Space between items */
+    /*gap: 10px; /* Space between items */
+    column-gap: 40px;
     width: 80%; /* Optional: Adjust width */
 }
 
@@ -131,8 +165,8 @@ body {
 
 /* Individual images */
 .image-grid img {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%; /* Optional: Rounds edges of images */
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
