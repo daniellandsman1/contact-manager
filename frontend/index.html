@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>InternLink</title>
     <!-- Link to the CSS file -->
-    <link rel="stylesheet" href="/styles/stylesLogin.css">
+    <link rel="stylesheet" href="/styles/stylesLogin.css" />
     <!-- Istok Web font family -->
-    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap" rel="stylesheet">
-
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- put website inside this div -->
     <div class="container">
-        <div class="carousel"></div>
-        <div class="loginContainer">
-            <h1>InternLink</h1>
-            <div class="login">
-                <form action="/" method="/">
-                    <input id = "username" type="text" name="username" placeholder="Username" required>
-                    <input id = "password" type="password" name="password" placeholder="Password" required>
-                    
+      <div class="carousel"></div>
+      <div class="loginContainer">
+        <h1>InternLink</h1>
+        <div class="login">
+          <form action="/" method="/">
+            <input
+              id="username"
+              type="text"
+              name="username"
+              placeholder="Username"
+              required
+            />
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
 
-                    <button class="loginButton" type="submit">Login</button>
-                </form>
-                
-                <div class="signUpSection">
-                    <p class = "signUpPrompt">Don't have an account?</p>
-                    <hr>
-                    <a href="/pages/signUp.html" class="createAccountPageButton">Create account</a>
-                </div>
-            </div>
+            <button class="loginButton" type="submit">Login</button>
+          </form>
 
-
+          <div class="signUpSection">
+            <p class="signUpPrompt">Don't have an account?</p>
+            <hr />
+            <a href="/pages/signUp.html" class="createAccountPageButton"
+              >Create account</a
+            >
+          </div>
         </div>
-    </div> 
+      </div>
+    </div>
     <!-- Link to the JavaScript file -->
     <script src="/scripts/scriptsLogin.js"></script>
-
-
-</body>
+  </body>
 </html>
