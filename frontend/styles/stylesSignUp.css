@@ -1,172 +1,206 @@
-body{
-    /* margin 0 and padding 0 to get the default out of the way */
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-
-   
+body {
+  /* margin 0 and padding 0 to get the default out of the way */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .container {
-    background-color:rgb(60, 60, 60);
-    /* 100% of the viewport height */
-    min-height: 100vh; 
-    min-width: 100vw;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    
-
-    
+  background-color: rgb(60, 60, 60);
+  /* 100% of the viewport height */
+  min-height: 100vh;
+  min-width: 100vw;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
-.carousel{
-
+.carousel {
 }
-.loginContainer{
-    text-align: center;
-    width: 100%;
-    margin-bottom: 8rem;
-
+.loginContainer {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 8rem;
 }
-.loginContainer h1{
-    /* InternLink header was pushing loginContainer down */
-    margin: 0;
-    color: white;
-    font-size: 32px;
-    font-family: 'Istok Web', sans-serif;
+.loginContainer h1 {
+  /* InternLink header was pushing loginContainer down */
+  margin: 0;
+  color: white;
+  font-size: 32px;
+  font-family: "Istok Web", sans-serif;
 }
-.login{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.login form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
+.login form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
 }
-#username{
-    margin-top: 4rem;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    width: 80%;
-    border: 1px solid rgb(60, 60, 60);
-    border-radius: 3px;
-    color: black;
-    font-size: 16px;
-    background-color: rgb(215, 213, 213);
-    box-sizing: border-box;
+#username {
+  margin-top: 4rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  width: 80%;
+  border: 1px solid rgb(60, 60, 60);
+  border-radius: 3px;
+  color: black;
+  font-size: 16px;
+  background-color: rgb(215, 213, 213);
+  box-sizing: border-box;
 }
-#password{
-    margin-top: 10px;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    width: 80%;
-    border: 1px solid rgb(60, 60, 60);
-    border-radius: 3px;
-    color: black;
-    font-size: 16px;
-    background-color: rgb(215, 213, 213);
-    box-sizing: border-box;
+#password {
+  margin-top: 10px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  width: 80%;
+  border: 1px solid rgb(60, 60, 60);
+  border-radius: 3px;
+  color: black;
+  font-size: 16px;
+  background-color: rgb(215, 213, 213);
+  box-sizing: border-box;
 }
-#passwordConfirm{
-    margin-top: 10px;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    width: 80%;
-    border: 1px solid rgb(60, 60, 60);
-    border-radius: 3px;
-    color: black;
-    font-size: 16px;
-    background-color: rgb(215, 213, 213);
-    box-sizing: border-box;
+#passwordConfirm {
+  margin-top: 10px;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 80%;
+  border: 1px solid rgb(60, 60, 60);
+  border-radius: 3px;
+  color: black;
+  font-size: 16px;
+  background-color: rgb(215, 213, 213);
+  box-sizing: border-box;
 }
-#username::placeholder, #password::placeholder{
-    color: black;
-    opacity: 0.7;
-    font-size: 16px;
+#username::placeholder,
+#password::placeholder {
+  color: black;
+  opacity: 0.7;
+  font-size: 16px;
 }
-.loginButton{
-    margin-top: 1rem;
-    padding: 0.5rem;
-    width: 80%;
-    background-color: rgb(82, 131, 255);
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 3px;
-    box-sizing: border-box;
+.loginButton {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  width: 80%;
+  background-color: rgb(82, 131, 255);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
 }
-.loginButton:hover{
-    background-color: rgb(75, 119, 230);
-    cursor: pointer;
+.loginButton:hover {
+  background-color: rgb(75, 119, 230);
+  cursor: pointer;
 }
-.signUpSection{
-    display: flex;
-    flex-direction: column;
-    width: 91%;
-
+.signUpSection {
+  display: flex;
+  flex-direction: column;
+  width: 91%;
 }
-.signUpPrompt{
-    margin-top: 5rem;
-    color: white;
-    font-size: 18px;
-    width: 100%;
-    text-align: left;
-    padding-left: 0.3rem;
-    font-family: 'Istok Web', sans-serif;
+.signUpPrompt {
+  margin-top: 5rem;
+  color: white;
+  font-size: 18px;
+  width: 100%;
+  text-align: left;
+  padding-left: 0.3rem;
+  font-family: "Istok Web", sans-serif;
 }
-.login hr{
-    background-color: white;
-    margin-top: -0.8rem;
-    height: 0.2px;
-    width: 100%;
+.login hr {
+  background-color: white;
+  margin-top: -0.8rem;
+  height: 0.2px;
+  width: 100%;
 }
-.createAccountPageButton{
-    margin-top: 1rem;
-    color: rgb(82, 131, 255);
-    text-decoration: none;
-    font-size: 17px;
+.createAccountPageButton {
+  margin-top: 1rem;
+  color: rgb(82, 131, 255);
+  text-decoration: none;
+  font-size: 17px;
 }
-.createAccountPageButton:hover{
-    color: rgb(75, 119, 230);
+.createAccountPageButton:hover {
+  color: rgb(75, 119, 230);
 }
 @media (min-width: 769px) {
     .container {
-        min-height: 100vh; 
-        min-width: 100vw;
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;  
+      background: none;
+      min-height: 100vh;
+      min-width: 100vw;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
-    .carousel{
-        width: 100%;
-        height: 100vh;
-        background-image: url('../gallery/students-from-back.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-
+    .carousel {
+      width: 100%;
+      height: 100vh;
+      background-image: url("../gallery/students-from-back.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
     }
-    .loginContainer{
-        background-color: rgb(60, 60, 60, 0.9);
-        text-align: center;
-        width: 55%;
-        padding-top: 12rem;
-        padding-bottom: 20rem;
-        position: absolute;
-        margin-bottom: 0;
-
+    .loginContainer {
+      background-color: rgb(60, 60, 60, 0.9);
+      text-align: center;
+      width: 55%;
+      padding-top: 12rem;
+      padding-bottom: 20rem;
+      position: absolute;
+      margin-bottom: 0;
     }
-}
-@media (min-width: 1024px) {
+  }
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    .loginContainer {
+      background-color: rgb(60, 60, 60, 0.9);
+      text-align: center;
+      width: 55%;
+      padding-top: 15rem;
+      padding-bottom: 17rem;
+      position: absolute;
+      margin-bottom: 0;
+    }
+  }
+  @media (min-width: 1440px) {
     .container {
-        display:none
+      background: none;
+      min-height: 100vh;
+      min-width: 100vw;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      overflow: hidden;
     }
-}
+    .carousel {
+      width: 100%;
+      height: 100vh;
+      background-image: url("../gallery/students-from-back.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .loginContainer {
+      background-color: rgb(60, 60, 60, 0.9);
+      text-align: center;
+      width: 45%;
+      height: 100vh;
+      padding-top: 0;
+      padding-bottom: 0;
+      position: absolute;
+      margin-bottom: 0;
+    }
+    .loginContainer h1 {
+      /* InternLink header was pushing loginContainer down */
+      margin: 0;
+      color: white;
+      font-size: 32px;
+      font-family: "Istok Web", sans-serif;
+      margin-top: 17rem;
+  }
+  
