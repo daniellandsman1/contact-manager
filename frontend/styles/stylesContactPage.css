@@ -7,7 +7,7 @@
 }
 
 /* Make sure all elements with potential large sizes stay within the viewport */
-.image-grid, .navBar, .dropdown-content {
+.navBar, .dropdown-content {
     width: 100%;
     max-width: 100%;
 }
@@ -17,7 +17,6 @@ html, body {
     height: 100%;   
 }
 
-/* Center the container on the page */
 body {
     display: flex;
     flex-direction: column;
@@ -160,46 +159,3 @@ body {
     padding: 5px; 
     box-sizing: border-box; /* Include padding in the width calculation */
 }
-
-/* The grid container */
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    grid-template-rows: repeat(3, auto); /* Adjust grid rows for image blocks */
-    column-gap: 40px;
-    width: 80%; 
-}
-
-/* Individual image containers */
-.image-item {
-    text-align: center; /* Center the image and text inside the item */
-}
-
-/* Individual images */
-.image-grid img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%; /* Optional: Rounds edges of images */
-    object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
-    border: 2px solid #ccc;
-}
-
-/* Smaller text under each image */
-.image-text {
-    font-family: 'Istok Web', sans-serif;
-    font-size: 14px; /* Smaller font size */
-    color: #666; 
-    margin-top: 8px; /* Add some space above the text */
-}
-
-/* Styling for the text between image rows */
-.text-between {
-    grid-column: span 3; /* Ensures text spans across all 3 columns */
-    font-family: 'Istok Web', sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin: 10px 0; /* Space above and below text */
-}
-
