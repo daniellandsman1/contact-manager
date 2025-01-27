@@ -186,13 +186,13 @@ body {
       background-repeat: no-repeat;
     }
     .loginContainer {
-      background-color: rgb(60, 60, 60, 0.9);
+      background-color: rgb(60, 60, 60);
       text-align: center;
-      width: 45%;
+      width: 65%;
       height: 100vh;
       padding-top: 0;
       padding-bottom: 0;
-      position: absolute;
+      position: relative;
       margin-bottom: 0;
     }
     .loginContainer h1 {
@@ -201,6 +201,5 @@ body {
       color: white;
       font-size: 32px;
       font-family: "Istok Web", sans-serif;
-      margin-top: 17rem;
+      margin-top: 20%;
   }
-  
