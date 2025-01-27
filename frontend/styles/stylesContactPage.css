@@ -118,6 +118,7 @@ body {
     content: attr(data-label);
     width: 80%;
     height: 80%; 
+    border-radius: 10px;
     font-size: 1.5em; /* Adjust font size proportionally */
     display: flex; 
     align-items: center;
@@ -134,7 +135,7 @@ body {
 .dropbtn::after {
     content: attr(data-label);
     text-align: center;
-    color: white;
+    color: #c8c8c8;
 }
 
 @media (min-width: 768px) {
