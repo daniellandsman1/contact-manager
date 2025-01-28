@@ -13,33 +13,38 @@
     />
   </head>
   <body>
-    <navbar class="navBar">
-      <!-- Left circle image -->
-      <div class="navBar-left">
-        <div class="logo">
-          <img src="../gallery/people-talking-on-stairs.jpg" alt="Logo" />
-        </div>
-        <p class="navBar-text">InternLink</p>
-      </div>
-      <!-- Right drop-down menu -->
-      <div class="dropdown" style="float: right">
-        <button class="dropbtn" data-label="&equiv;"></button>
-        <div class="dropdown-content">
-          <a href="#">About</a>
-          <a href="#">Contacts</a>
-          <a href="./index.html">Log Out</a>
-        </div>
-      </div>
-    </navbar>
     <div class="container">
-      <div class="content-container"></div>
+      <navbar class="navBar">
+        <!-- Left circle image -->
+        <div class="navBar-left">
+          <div class="logo"></div>
+          <p class="navBar-text">InternLink</p>
+        </div>
+        <!-- Right drop-down menu -->
+        <div class="dropdown" style="float: right">
+          <button class="dropbtn" data-label="&equiv;"></button>
+          <div class="dropdown-content">
+            <a href="#">About</a>
+            <a href="#">Contacts</a>
+            <a href="./index.html">Log Out</a>
+          </div>
+        </div>
+      </navbar>
 
-      <div class="searchbar"></div>
-      <div class="contact-container">
-        <div class="default-pic"></div>
-        <button class="addContactBtn">+ Add Contact</button>
+      <div class="content-container">
+        <div class="content">
+          <div class="left-side">
+            <div class="searchbar">Search</div>
+            <div class="contact-container">
+              <div class="default-pic">default-pic</div>
+              <button class="addContactBtn">+ Add Contact</button>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="contact-list-for-search">contactlist</div>
+          </div>
+        </div>
       </div>
-      <div class="contact-list-for-search"></div>
     </div>
   </body>
 </html>
