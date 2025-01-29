@@ -1,0 +1,279 @@
+swagger: '2.0'
+info:
+  description: This is the API documentation for the COP 4331 Contact Manager app
+  version: 1.0.0
+  title: Intern Link
+  # put the contact info for your development or API team
+  contact:
+    email: jh945387@ucf.edu
+            ke685490@ucf.edu
+            da606808@ucf.edu
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+paths:
+  /Login.php:
+    post:
+      tags:
+      - Users
+      summary: Logs in to the contact manager app
+      operationId: dlLogin
+      description: Logs in to contact manager app
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: loginItem
+        description: Login
+        schema:
+          $ref: '#/definitions/Login'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /SearchColors.php:
+    post:
+      tags:
+      - Search
+      summary: Searches colors
+      operationId: searchColor
+      description: Searches colors from the color app database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: searchItem
+        description: Color Search
+        schema:
+          $ref: '#/definitions/Search'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /AddContact.php:
+    post:
+      tags:
+      - Contacts
+      summary: Adds a contact
+      operationId: addContact
+      description: Adds a contact to the contact manager app database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: contactItem
+        description: Contact details to be added
+        schema:
+          type: object
+          required:
+          - userId
+          - firstName
+          - lastName
+          - email
+          - phone
+          properties:
+            userId:
+              type: integer
+              example: 7
+            firstName:
+              type: string
+              example: "Jhanel"
+            lastName:
+              type: string
+              example: "Ferguson"
+            email:
+              type: string
+              example: "jhanel.f@example.com"
+            phone:
+              type: string
+              example: "123-456-7890"
+      responses:
+        200:
+          description: Contact added successfully.
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 28
+              error:
+                type: string
+                example: ""
+        404:
+          description: Bad Request (e.g., missing required fields).
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid input: All fields are required."
+        500:
+          description: Internal Server Error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Database connection error."
+  /DeleteContact.php:
+    post:
+      tags:
+      - Contacts
+      summary: Deletes a contact
+      operationId: deleteContact
+      description: Deletes a contact from the contact manager app database.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: deleteContactItem
+        description: The details of the contact to delete.
+        schema:
+          type: object
+          required:
+          - contactId
+          - userId
+          properties:
+            contactId:
+              type: integer
+              example: 27
+            userId:
+              type: integer
+              example: 7
+      responses:
+        200:
+          description: Contact deleted successfully.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Contact deleted successfully."
+              error:
+                type: string
+                example: ""
+        400:
+          description: Bad Request (e.g., missing required fields).
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid input: Both contactId and userId are required."
+        404:
+          description: Contact not found.
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "No contact found with the given contactId and userId."
+        500:
+          description: Internal Server Error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Database connection error."
+  /Register.php:
+    post:
+      tags:
+      - Users
+      summary: Registers a new user
+      operationId: registerUser
+      description: Registers a new user in the contact manager app
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: registerItem
+        description: User registration
+        schema:
+          type: object
+          required:
+          - firstName
+          - lastName
+          - login
+          - password
+          properties:
+            firstName:
+              type: string
+              example: "Walter"
+            lastName:
+              type: string
+              example: "White"
+            login:
+              type: string
+              example: "test1"
+            password:
+              type: string
+              example: "test2"
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+            
+definitions:
+  Login:
+    type: object
+    required:
+    - login
+    - password
+    properties:
+      login:
+        type: string
+        example: "fred"
+      password:
+        type: string
+        example: "secret"
+  Color:
+    type: object
+    required:
+    - userId
+    - color
+    properties:
+      userId:
+        type: integer
+        example: 1
+      color:
+        type: string
+        example: "Blue Green"
+  Search:
+    type: object
+    required:
+    - userId
+    - search
+    properties:
+      userId:
+        type: integer
+        example: 1
+      search:
+        type: string
+        example: "bl"
+
+host: COP4331-5.com
+basePath: /LAMPAPI
+schemes:
+- http
