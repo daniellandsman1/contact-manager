@@ -192,6 +192,165 @@ paths:
               error:
                 type: string
                 example: "Database connection error."
+/SearchContact.php:
+    post:
+      tags:
+      - Contacts
+      summary: Searches for a contact
+      operationId: searchContact
+      description: Searches for a contact in the contact manager app database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: contactItem
+        description: Contact details to be searched for
+        schema:
+          type: object
+          required:
+          - UserID
+          - search
+          properties:
+            UserID:
+              type: integer
+              example: 7
+            search:
+              type: string
+              example: "Bruce"
+      responses:
+        200:
+          description: Contact found successfully.
+          schema:
+            type: object
+            properties:
+              results:
+                type: object[]
+                properties:
+                  FirstName:
+                    type: string
+                    example: "Rick"
+                  LastName:
+                    type: string
+                    example: "Leinecker"
+                  Email:
+                    type: string
+                    example: "rickl@gmail.com"
+                  Phone:
+                    type: string
+                    example: "111-222-3333"
+              error:
+                type: string
+                example: ""
+        404:
+          description: Bad Request (e.g., No records found).
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 0
+              firstName:
+                type: string
+                example: ""
+              lastName:
+                type: string
+                example: ""
+              error:
+                type: string
+                example: "No Records Found"
+        500:
+          description: Internal Server Error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Database connection error."
+  /UpdateContact.php:
+    post:
+      tags:
+      - Contacts
+      summary: Updates a contact
+      operationId: updateContact
+      description: Updates a contact in the contact manager app database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: contactItem
+        description: Contact details to be updated
+        schema:
+          type: object
+          required:
+          - FirstName
+          - LastName
+          - Email
+          - Phone
+          - ID
+          - UserID
+          properties:
+            FirstName:
+              type: string
+              example: "Dan"
+            LastName:
+              type: string
+              example: "Landsman"
+            Email:
+              type: string
+              example: "test@yahoo.com"
+            Phone:
+              type: string
+              example: "123-456-7890"
+            ID:
+              type: integer
+              example: 1
+            UserID:
+              type: integer
+              example: 7
+      responses:
+        200:
+          description: Contact updated successfully.
+          schema:
+            type: object
+            properties:
+              newContactInfo:
+                type: object
+                properties:
+                  FirstName:
+                    type: string
+                    example: "Rick"
+                  LastName:
+                    type: string
+                    example: "Leinecker"
+                  Email:
+                    type: string
+                    example: "rickl@gmail.com"
+                  Phone:
+                    type: string
+                    example: "111-222-3333"
+              error:
+                type: string
+                example: ""
+        404:
+          description: Bad Request (e.g., Invalid input format).
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid phone number format"
+        500:
+          description: Internal Server Error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Database connection error."           
   /Register.php:
     post:
       tags:
