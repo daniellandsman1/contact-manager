@@ -1,20 +1,32 @@
-// script.js
-document
-  .getElementById("loginForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission to the server
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.getElementById("loginForm");
 
-    // Retrieve the form data
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+  if (!loginForm) {
+    console.error("Form not found!");
+    return;
+  }
 
-    // Simulate sending data to the server (e.g., via an API)
+  loginForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    if (!usernameInput || !passwordInput) {
+      console.error("Username or Password field not found!");
+      return;
+    }
+
+    const username = usernameInput.value;
+    const password = passwordInput.value;
+
     console.log("Sending data to the server:", { username, password });
 
-    // Simulate a successful login and navigate to the next page
     if (username && password) {
-      window.location.href = "contactPage.html"; // Redirect to the dashboard or next page
+      console.log("Redirecting to contactPage.html...");
+      window.location.href = "contactPage.html"; // Redirect
     } else {
       alert("Please fill in both username and password.");
     }
   });
+});
