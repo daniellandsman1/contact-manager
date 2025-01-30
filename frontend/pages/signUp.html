@@ -1,44 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>InternLink</title>
     <!-- Link to the CSS file -->
-    <link rel="stylesheet" href="../styles/stylesSignUp.css">
+    <link rel="stylesheet" href="../styles/stylesSignUp.css" />
     <!-- Istok Web font family -->
-    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap" rel="stylesheet">
-
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- put website inside this div -->
     <div class="container">
-        <div class="carousel"></div>
-        <div class="loginContainer">
-            <h1>InternLink</h1>
-            <div class="login">
-                <form action="/" method="/">
-                    <input id = "username" type="text" name="username" placeholder="Username" required>
-                    <input id = "password" type="password" name="password" placeholder="Password" required>
-                    <input id = "password" type="password" name="confirmPassword" placeholder="Confirm Password" required>
+      <div class="carousel"></div>
+      <div class="loginContainer">
+        <h1>InternLink</h1>
+        <div class="login">
+          <form action="/" method="/">
+            <input
+              id="username"
+              type="text"
+              name="username"
+              placeholder="Username"
+              required
+            />
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <input
+              id="confirmPassword"
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              required
+            />
 
+            <button class="loginButton" id="loginButton" type="submit">
+              Create Account
+            </button>
+          </form>
 
-                    <button class="loginButton" type="submit">Create Account</button>
-                </form>
-                
-                <div class="signUpSection">
-                    <p class = "signUpPrompt">Already have an account?</p>
-                    <hr>
-                    <a href="../index.html" class="createAccountPageButton">Sign in</a>
-                </div>
-            </div>
-
-
+          <div class="signUpSection">
+            <p class="signUpPrompt">Already have an account?</p>
+            <hr />
+            <a href="../pages/index.html" class="createAccountPageButton"
+              >Sign in</a
+            >
+          </div>
         </div>
-    </div> 
+      </div>
+    </div>
     <!-- Link to the JavaScript file -->
-    <script src="/scripts/scriptsLogin.js"></script>
-
-
-</body>
+    <script src="/scripts/scriptsSignUp.js"></script>
+  </body>
 </html>
