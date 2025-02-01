@@ -19,7 +19,11 @@
       <div class="loginContainer">
         <h1>InternLink</h1>
         <div class="login">
-          <form action="/" method="/">
+          <form
+            id="signUpForm"
+            action="https://internlink.xyz/LAMPAPI/Register.php"
+            method="POST"
+          >
             <input
               id="username"
               type="text"
@@ -42,10 +46,11 @@
               required
             />
 
-            <button class="loginButton" id="loginButton" type="submit">
+            <button class="sign-up-button" id="signUpButton" type="submit">
               Create Account
             </button>
           </form>
+          <p id="signupMessage"></p>
 
           <div class="signUpSection">
             <p class="signUpPrompt">Already have an account?</p>
@@ -58,6 +63,6 @@
       </div>
     </div>
     <!-- Link to the JavaScript file -->
-    <script src="/scripts/scriptsSignUp.js"></script>
+    <script src="../scripts/scriptsSignUp.js"></script>
   </body>
 </html>
