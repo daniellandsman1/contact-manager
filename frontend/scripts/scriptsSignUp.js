@@ -52,14 +52,21 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = await response.json();
       console.log("Server response:", data);
       if (response.ok) {
-        document.getElementById("signupMessage").textContent =
-          "Registration successful!";
-        document.getElementById("signupMessage").style.color = "white";
-
+        //checking if this is duplicate user or not
         console.log("data given back from api: ", data);
-        // setTimeout(() => {
-        //   window.location.href = "index.html"; // Redirect to login page
-        // }, 2000);
+
+        if (data.error == "duplicate user") {
+          document.getElementById("signupMessage").textContent =
+            "This username is already taken.";
+          document.getElementById("signupMessage").style.color = "red";
+        } else {
+          document.getElementById("signupMessage").textContent =
+            "Registration successful!";
+          document.getElementById("signupMessage").style.color = "white";
+          // setTimeout(() => {
+          //   window.location.href = "index.html"; // Redirect to login page
+          // }, 2000);
+        }
       } else {
         document.getElementById("signupMessage").textContent =
           data.error || "Registration failed.";
