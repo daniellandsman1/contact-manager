@@ -42,8 +42,38 @@ body {
   align-items: center;
   width: 80%;
 }
-#username {
+.first-and-last{
   margin-top: 4rem;
+  margin-bottom: 0.5rem;
+  width: 80%;
+
+}
+#firstName{
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  width: 49%;
+  border: 1px solid rgb(60, 60, 60);
+  border-radius: 3px;
+  color: black;
+  font-size: 16px;
+  background-color: rgb(215, 213, 213);
+  box-sizing: border-box;
+}
+
+#lastName {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  width: 49%;
+  border: 1px solid rgb(60, 60, 60);
+  border-radius: 3px;
+  color: black;
+  font-size: 16px;
+  background-color: rgb(215, 213, 213);
+  box-sizing: border-box;
+
+
+}
+#username {
   margin-bottom: 0.5rem;
   padding: 0.5rem;
   width: 80%;
@@ -128,6 +158,9 @@ body {
 }
 .createAccountPageButton:hover {
   color: rgb(75, 119, 230);
+}
+#signupMessage{
+  font-size: 16px;
 }
 @media (min-width: 769px) {
     .container {
