@@ -1,65 +1,79 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const loginForm = document.getElementById("loginForm");
-  const loginMessage = document.getElementById("loginMessage");
+  const searchInput = document.getElementById("searchInput"); // Check if input is found
+  const resultsContainer = document.getElementById("searchResults"); // Check if results container is found
 
-  if (!loginForm) {
-    console.error("Form not found!");
+  if (!searchInput) {
+    console.error("🔴 ERROR: searchInput element not found!");
+    return;
+  }
+  if (!resultsContainer) {
+    console.error("🔴 ERROR: searchResults container not found!");
     return;
   }
 
-  loginForm.addEventListener("submit", async function (event) {
-    event.preventDefault();
+  console.log("✅ searchInput and searchResults found.");
 
-    const usernameInput = document.getElementById("username");
-    const passwordInput = document.getElementById("password");
+  // 🔹 Hardcoded test data
+  const testContacts = [
+    {
+      FirstName: "Alice",
+      LastName: "Johnson",
+      Phone: "123-456-7890",
+      Email: "alice@example.com",
+    },
+    {
+      FirstName: "Bob",
+      LastName: "Smith",
+      Phone: "987-654-3210",
+      Email: "bob@example.com",
+    },
+    {
+      FirstName: "Charlie",
+      LastName: "Brown",
+      Phone: "555-555-5555",
+      Email: "charlie@example.com",
+    },
+    {
+      FirstName: "David",
+      LastName: "Lee",
+      Phone: "111-222-3333",
+      Email: "david@example.com",
+    },
+  ];
 
-    const username = usernameInput.value.trim();
-    const password = passwordInput.value.trim();
+  searchInput.addEventListener("input", function () {
+    const query = searchInput.value.trim().toLowerCase();
+    console.log("🔍 User typed:", query);
 
-    if (!username || !password) {
-      alert("Please fill in both username and password.");
+    if (query.length === 0) {
+      console.log("❌ Input is empty. Clearing results.");
+      resultsContainer.innerHTML = ""; // Clear results if input is empty
       return;
     }
 
-    const loginInfo = {
-      login: username,
-      password: password,
-    };
+    // 🔹 Filter hardcoded contacts based on the search query
+    const filteredContacts = testContacts.filter(
+      (contact) =>
+        contact.FirstName.toLowerCase().includes(query) ||
+        contact.LastName.toLowerCase().includes(query) ||
+        contact.Phone.includes(query) ||
+        contact.Email.toLowerCase().includes(query)
+    );
 
-    // console.log("Sending data to the server:", {
-    //   username,
-    //   password,
-    // });
+    console.log("🟢 Filtered Contacts:", filteredContacts);
 
-    try {
-      const response = await fetch("http://internlink.xyz/LAMPAPI/Login.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginInfo),
-      });
-
-      const data = await response.json();
-      console.log("Server response:", data);
-
-      if (response.ok) {
-        console.log("Api call successful:");
-        if (data.error == "No Records Found") {
-          // console.log("username or password is incorrect");
-          loginMessage.textContent = "Username or Password is incorrect.";
-        } else {
-          loginMessage.textContent = "";
-          console.log("Login successful");
-
-          window.location.href = "../pages/contactPage.html";
-        }
-      } else {
-        alert(data.message || "Invalid credentials. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Something went wrong. Please try again later.");
+    // 🔹 Display results
+    if (filteredContacts.length > 0) {
+      resultsContainer.innerHTML = filteredContacts
+        .map(
+          (contact) =>
+            `<p>${contact.FirstName} ${contact.LastName} - ${contact.Phone} - ${contact.Email}</p>`
+        )
+        .join("");
+      console.log("✅ Results Updated!");
+    } else {
+      resultsContainer.innerHTML = "<p>No results found.</p>";
+      console.log("⚠️ No results found.");
     }
   });
 });

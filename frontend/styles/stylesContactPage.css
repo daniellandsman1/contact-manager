@@ -14,9 +14,6 @@ body {
   max-width: 100%;
 }
 
-body {
-}
-
 /* navBar styling */
 .navBar {
   display: flex;
@@ -47,7 +44,7 @@ body {
 }
 
 .logo {
-  background-image: url("../gallery/people-talking-on-stairs.jpg");
+  background-image: url("../gallery/InternLink-logo.png");
   width: 6vh;
   aspect-ratio: 1 / 1;
   background-size: cover;
@@ -166,7 +163,7 @@ body {
 }
 .content-container {
   width: 100%;
-  background: red;
+  background: white;
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -185,34 +182,51 @@ body {
   width: 100%;
   height: 100%;
   height: 55%;
-  background-color: purple;
+  background-color: white;
 }
 .searchbar {
-  background-color: yellow;
+  background-color: white;
   width: 100%;
   height: 15%;
 }
 .contact-container {
-  background-color: green;
   width: 100%;
   height: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addContact {
+  background-color: white;
+  width: 98%;
+  height: 95%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .default-pic {
+  background-image: url("../gallery/default-profile.png");
+  width: 140px;
+  height: 140px;
+  background-size: cover;
+  border-radius: 50%; /* Make the image circular */
+  margin-bottom: 1rem;
 }
 .addContactBtn {
 }
 .right-side {
   width: 100%;
   height: 45%;
-  background-color: orange;
+  background-color: brown;
 }
 .contact-list-for-search {
 }
 
-@media (min-width: 769px) {
+/* @media (min-width: 769px) {
   .content-container {
     width: 100%;
-    background: red;
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -258,7 +272,6 @@ body {
 @media (min-width: 1024px) and (max-width: 1439px) {
   .content-container {
     width: 100%;
-    background: red;
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -303,7 +316,6 @@ body {
 @media (min-width: 1440px) {
   .content-container {
     width: 100%;
-    background: red;
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -347,10 +359,9 @@ body {
 }
 
 /* iPad Pro portrait-specific adjustments */
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
   .content-container {
     width: 100%;
-    background: red;
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -392,13 +403,12 @@ body {
   }
   .contact-list-for-search {
   }
-}
-
+} */
 .search-container {
   width: 300px;
 }
 
-input {
+.search-container input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
