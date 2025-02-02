@@ -6,6 +6,7 @@ body {
   height: 100%;
   overflow: hidden;
 }
+
 .container {
   background-color: rgb(60, 60, 60);
   /* 100% of the viewport height */
@@ -116,6 +117,10 @@ body {
 .createAccountPageButton:hover {
   color: rgb(75, 119, 230);
 }
+.loginMessage{
+  color: rgb(255, 0, 0);
+  font-size: 17px;
+}
 @media (min-width: 769px) {
   .container {
     background: none;
@@ -192,3 +197,4 @@ body {
     font-family: "Istok Web", sans-serif;
     margin-top: 20%;
 }
+

@@ -24,6 +24,23 @@
             action="https://internlink.xyz/LAMPAPI/Register.php"
             method="POST"
           >
+            <div class="first-and-last">
+              <input
+                id="firstName"
+                type="text"
+                name="firstName"
+                placeholder="First name"
+                required
+              />
+              <input
+                id="lastName"
+                type="text"
+                name="lastName"
+                placeholder="Last name"
+                required
+              />
+            </div>
+
             <input
               id="username"
               type="text"
@@ -55,9 +72,7 @@
           <div class="signUpSection">
             <p class="signUpPrompt">Already have an account?</p>
             <hr />
-            <a href="../pages/index.html" class="createAccountPageButton"
-              >Sign in</a
-            >
+            <a href="index.html" class="createAccountPageButton">Sign in</a>
           </div>
         </div>
       </div>
