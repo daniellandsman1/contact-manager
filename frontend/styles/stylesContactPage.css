@@ -195,6 +195,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .addContact {
   background-color: white;
@@ -203,7 +204,7 @@ body {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .default-pic {
@@ -224,6 +225,129 @@ body {
 .contact-list-for-search {
 }
 
+#savedForm {
+  display: none;
+}
+
+/* Styling the contact form */
+#contactForm {
+  display: none; /* Initially hidden */
+  width: 90%;
+  height: 95%;
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.left-section {
+  flex-basis: 30%; /* Occupies 30% of the width */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items vertically */
+  justify-content: center;
+}
+
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.form-pic {
+  width: 10vw; /* Responsive size */
+  height: 10vw;
+  max-width: 150px; /* Prevent it from getting too big */
+  max-height: 150px;
+  background-image: url("../gallery/default-profile.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin-bottom: 15px; /* Add space below the picture */
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center; /* Center-align fields */
+}
+
+.job-description {
+  width: 80%; /* Matches other input fields */
+  text-align: center;
+}
+
+
+.job-description .form-input {
+  width: 100%; /* Make sure the input field takes up full width in the container */
+  margin-top: 10px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between; /* Spread buttons out */
+  width: 100%; /* Match input field width */
+  margin-top: 10px; /* Space between last input and buttons */
+}
+
+
+#cancelBtn, #saveBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 48%; /* Make buttons take equal width */
+  text-align: center;
+}
+
+#cancelBtn {
+  background-color: #ccc;
+}
+
+#cancelBtn:hover {
+  background-color: #999;
+}
+
+#saveBtn {
+  background-color: #7580E8;
+  color: white;
+}
+
+#saveBtn:hover {
+  background-color: #7580E8;
+}
 /* @media (min-width: 769px) {
   .content-container {
     width: 100%;
