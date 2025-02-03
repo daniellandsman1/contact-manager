@@ -276,7 +276,19 @@ body {
   background-size: cover;
   background-position: center;
   border-radius: 50%;
-  margin-bottom: 15px; /* Add space below the picture */
+  margin-bottom: 15px;
+  cursor: pointer; /* Makes the image appear clickable */
+  position: relative; /* Needed for positioning the file input */
+}
+
+.form-pic input[type="file"] {
+  position: absolute; /* Position it on top of the image */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Makes the input invisible but still clickable */
+  cursor: pointer; /* Make it appear like the image is clickable */
 }
 
 .input-fields {
@@ -346,8 +358,40 @@ body {
 }
 
 #saveBtn:hover {
-  background-color: #7580E8;
+  background-color: #5963bb;
 }
+
+#savedForm {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;   
+  justify-content: center; 
+  text-align: center;   
+  padding: 20px;        
+}
+
+.saved-message {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px; 
+}
+
+#doneBtn {
+  display: block;
+  margin: 0 auto; 
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #7580E8;  
+  color: white;
+  border-radius: 5px;
+}
+
+#doneBtn:hover {
+  background-color: #5963bb; 
+}
+
 /* @media (min-width: 769px) {
   .content-container {
     width: 100%;
