@@ -24,8 +24,8 @@
         <div class="dropdown" style="float: right">
           <button class="dropbtn" data-label="&equiv;"></button>
           <div class="dropdown-content">
-            <a href="#">About</a>
-            <a href="#">Contacts</a>
+            <a href="./aboutUs.html">About</a>
+            <a href="./contactPage.html">Contacts</a>
             <a href="./index.html">Log Out</a>
           </div>
         </div>
@@ -51,7 +51,9 @@
   <div class="form-content">
     <!-- New Profile Picture -->
     <div class="left-section">
-      <div class="form-pic"></div>
+      <div class="form-pic">
+        <input type="file" id="uploadImage" accept="image/*" style="display: none;" />
+      </div>
       <input type="text" placeholder="Job Description" class="form-input job-description">
     </div>
 
@@ -70,8 +72,8 @@
   </div>
 </div>
 <!-- Saved screen (Initialy hidden)-->
- <div id="savedForm">
-  <h1>Saved!</h1>
+ <div id="savedForm" style="display: none;">
+  <p class="saved-message">Saved!</p>
   <button id="doneBtn">Done</button>
  </div>
             </div>
