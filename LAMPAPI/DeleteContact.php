@@ -3,8 +3,8 @@
     $inData = getRequestInfo();
 
 	// input data
-    $contactId = $inData["contactId"] ?? 0;
-    $userId = $inData["userId"] ?? 0;
+    $contactId = $inData["ContactID"] ?? 0;
+    $userId = $inData["UserID"] ?? 0;
 
 	// validates input
     if ($contactId <= 0 || $userId <= 0) {
@@ -19,7 +19,7 @@
         sendResultInfoAsJson(["error" => "Connection failed: " . $conn->connect_error]);
         exit;
     } else {
-        $stmt = $conn->prepare("DELETE FROM Contacts WHERE ID = ? AND UserId = ?");
+        $stmt = $conn->prepare("DELETE FROM Contacts WHERE ID = ? AND UserID = ?");
         $stmt->bind_param("ii", $contactId, $userId); // i - integer
 
         if ($stmt->execute()) {
