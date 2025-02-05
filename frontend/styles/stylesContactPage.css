@@ -5,7 +5,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
 }
 /* Make sure all elements with potential large sizes stay within the viewport */
 .navBar,
@@ -35,12 +34,7 @@ body {
 }
 
 .navBar-text {
-  font-size: calc(0.5 * 6vh); /* Set font size relative to navBar's height */
-  line-height: 1; /* Remove extra spacing inside the text */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding-top: 11%;
+  font-size: 3vh;
 }
 
 .logo {
@@ -153,199 +147,198 @@ body {
 }
 
 .container {
-  min-height: 100vh;
+  height: 100vh;
   min-width: 100vw;
   position: absolute;
   display: flex;
-  overflow: hidden;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
 }
+
 .content-container {
-  width: 100%;
-  background: white;
+  width: 1000px;
   display: flex;
   justify-content: center;
-  height: 100vh;
 }
 .content {
   display: flex;
-  background-color: blue;
-  width: 95%;
-  height: 88vh;
-  justify-content: center;
-  margin-top: 1vh;
+  width: 950px;
+  height: 100%;
+  margin-top: 1rem;
   flex-direction: column;
+  align-items: center;
 }
 
-.left-side {
+.search-container {
   width: 100%;
-  height: 100%;
-  height: 55%;
-  background-color: white;
 }
-.searchbar {
-  background-color: white;
+
+.search-container input {
   width: 100%;
-  height: 15%;
+  padding: 20px 0 20px 20px;
+  border-radius: 10px;
+  height: 60px;
+  font-size: 1.4rem;
+  border: 2px solid black;
+  box-sizing: border-box;
 }
-.contact-container {
+
+#defaultView {
   width: 100%;
-  height: 85%;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 .addContact {
-  background-color: white;
-  width: 98%;
-  height: 95%;
+  margin-top: 0.8rem;
+  width: 100%;
+  height: 450px;
   border: 1px solid black;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
+
 .default-pic {
   background-image: url("../gallery/default-profile.png");
-  width: 140px;
-  height: 140px;
-  background-size: cover;
-  border-radius: 50%; /* Make the image circular */
-  margin-bottom: 1rem;
-}
-.addContactBtn {
-}
-.right-side {
-  width: 100%;
-  height: 45%;
-  background-color: brown;
-}
-.contact-list-for-search {
-}
-
-#savedForm {
-  display: none;
-}
-
-/* Styling the contact form */
-#contactForm {
-  display: none; /* Initially hidden */
-  width: 90%;
-  height: 95%;
-  background-color: white;
-  border: 1px solid black;
-  padding: 20px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
-}
-
-.left-section {
-  flex-basis: 30%; /* Occupies 30% of the width */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center items vertically */
-  justify-content: center;
-}
-
-.contact-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  width: 100%;
-}
-
-.form-pic {
-  width: 10vw; /* Responsive size */
-  height: 10vw;
-  max-width: 150px; /* Prevent it from getting too big */
-  max-height: 150px;
-  background-image: url("../gallery/default-profile.png");
+  height: 270px;
+  width: 270px;
   background-size: cover;
   background-position: center;
   border-radius: 50%;
-  margin-bottom: 15px;
-  cursor: pointer; /* Makes the image appear clickable */
-  position: relative; /* Needed for positioning the file input */
+  margin-bottom: 0.5rem;
+  margin-top: 2.5rem;
 }
-
-.form-pic input[type="file"] {
-  position: absolute; /* Position it on top of the image */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0; /* Makes the input invisible but still clickable */
-  cursor: pointer; /* Make it appear like the image is clickable */
-}
-
-.input-fields {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  align-items: center; /* Center-align fields */
-}
-
-.job-description {
-  width: 80%; /* Matches other input fields */
-  text-align: center;
-}
-
-
-.job-description .form-input {
-  width: 100%; /* Make sure the input field takes up full width in the container */
-  margin-top: 10px;
-}
-
-.form-input {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.contact-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  width: 100%;
-}
-
-.form-buttons {
-  display: flex;
-  justify-content: space-between; /* Spread buttons out */
-  width: 100%; /* Match input field width */
-  margin-top: 10px; /* Space between last input and buttons */
-}
-
-
-#cancelBtn, #saveBtn {
-  padding: 10px 20px;
+#addContactBtn {
+  width: 50%;
+  height: 12%;
+  background-color: #7580e8;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 48%; /* Make buttons take equal width */
-  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.4rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#addContactBtn:hover {
+  background-color: rgb(137, 147, 231);
+}
+.contact-form {
+  margin-top: 0.8rem;
+  width: 100%;
+  height: 450px;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
+/* upperside of form containg all the inputs */
+.upper-input-container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  overflow: hidden;
+}
+.left-side-input-container {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-pic {
+  background-image: url("../gallery/default-profile.png");
+  width: 180px;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  cursor: pointer; /* Makes the image appear clickable */
+  position: relative; /* Needed for positioning the file input */
+  margin-top: 5rem;
+}
+
+.job-title {
+  margin-top: 2rem;
+  width: 70%;
+  padding: 20px 10px;
+  border-radius: 3px;
+  height: 30px;
+  font-size: 1rem;
+  border: 2px solid black;
+  box-sizing: border-box;
+  background-color: rgb(252, 240, 240);
+  border: none;
+}
+.right-side-input-container {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.right-side-input-container input {
+  background-color: rgb(252, 240, 240);
+  margin-top: 2rem;
+  width: 80%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+.front-and-last {
+  margin-top: 1.5rem;
+  width: 80%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.front-and-last input {
+  margin-top: 0;
+  width: 48%;
+  box-sizing: border-box;
+}
+.email {
+}
+.phone-number {
+}
+.company {
+}
+.linkedin {
+}
+
+/* buttons in the contact form */
+.lower-button-container {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+#cancelBtn,
+#saveBtn {
+  padding: 0px 0px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  text-align: center;
+  margin-bottom: 15px;
+}
 #cancelBtn {
   background-color: #ccc;
+  margin-left: 20px;
 }
 
 #cancelBtn:hover {
@@ -353,242 +346,48 @@ body {
 }
 
 #saveBtn {
-  background-color: #7580E8;
+  background-color: #7580e8;
   color: white;
+  margin-right: 20px;
 }
 
 #saveBtn:hover {
   background-color: #5963bb;
 }
 
-#savedForm {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;   
-  justify-content: center; 
-  text-align: center;   
-  padding: 20px;        
-}
-
-.saved-message {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 20px; 
-}
-
-#doneBtn {
-  display: block;
-  margin: 0 auto; 
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  background-color: #7580E8;  
-  color: white;
-  border-radius: 5px;
-}
-
-#doneBtn:hover {
-  background-color: #5963bb; 
-}
-
-/* @media (min-width: 769px) {
-  .content-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-  }
-  .content {
-    display: flex;
-    background-color: blue;
-    width: 95%;
-    height: 88vh;
-    justify-content: center;
-    margin-top: 1vh;
-    flex-direction: column;
-  }
-
-  .left-side {
-    width: 100%;
-    height: 100%;
-    height: 55%;
-    background-color: purple;
-  }
-  .searchbar {
-    background-color: yellow;
-    width: 100%;
-    height: 15%;
-  }
-  .contact-container {
-    background-color: green;
-    width: 100%;
-    height: 85%;
-  }
-  .default-pic {
-  }
-  .addContactBtn {
-  }
-  .right-side {
-    width: 100%;
-    height: 45%;
-    background-color: orange;
-  }
-  .contact-list-for-search {
-  }
-}
-@media (min-width: 1024px) and (max-width: 1439px) {
-  .content-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-  }
-  .content {
-    display: flex;
-    background-color: blue;
-    width: 95%;
-    height: 88vh;
-    justify-content: center;
-    margin-top: 1vh;
-    flex-direction: row;
-  }
-
-  .left-side {
-    width: 65%;
-    height: 100%;
-    background-color: purple;
-  }
-  .searchbar {
-    background-color: yellow;
-    width: 100%;
-    height: 13%;
-  }
-  .contact-container {
-    background-color: green;
-    width: 100%;
-    height: 87%;
-  }
-  .default-pic {
-  }
-  .addContactBtn {
-  }
-  .right-side {
-    width: 35%;
-    height: 100%;
-    background-color: orange;
-  }
-  .contact-list-for-search {
-  }
-}
-@media (min-width: 1440px) {
-  .content-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-  }
-  .content {
-    display: flex;
-    background-color: blue;
-    width: 95%;
-    height: 88vh;
-    justify-content: center;
-    margin-top: 1vh;
-    flex-direction: row;
-  }
-
-  .left-side {
-    width: 65%;
-    height: 100%;
-    background-color: purple;
-  }
-  .searchbar {
-    background-color: yellow;
-    width: 100%;
-    height: 13%;
-  }
-  .contact-container {
-    background-color: green;
-    width: 100%;
-    height: 87%;
-  }
-  .default-pic {
-  }
-  .addContactBtn {
-  }
-  .right-side {
-    width: 35%;
-    height: 100%;
-    background-color: orange;
-  }
-  .contact-list-for-search {
-  }
-}
-
-/* iPad Pro portrait-specific adjustments */
-/* @media screen and (max-width: 1024px) {
-  .content-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-  }
-  .content {
-    display: flex;
-    background-color: blue;
-    width: 95%;
-    height: 88vh;
-    justify-content: center;
-    margin-top: 1vh;
-    flex-direction: column;
-  }
-
-  .left-side {
-    width: 100%;
-    height: 100%;
-    height: 55%;
-    background-color: purple;
-  }
-  .searchbar {
-    background-color: yellow;
-    width: 100%;
-    height: 15%;
-  }
-  .contact-container {
-    background-color: green;
-    width: 100%;
-    height: 85%;
-  }
-  .default-pic {
-  }
-  .addContactBtn {
-  }
-  .right-side {
-    width: 100%;
-    height: 45%;
-    background-color: orange;
-  }
-  .contact-list-for-search {
-  }
-} */
-.search-container {
-  width: 300px;
-}
-
-.search-container input {
+#donePage {
+  margin-top: 0.8rem;
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  height: 450px;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
-
-ul {
-  list-style: none;
-  padding: 0;
+#donePage p {
+  font-size: 2rem;
+  margin-top: 10rem;
+  margin-bottom: 4rem;
 }
-
-li {
-  padding: 5px;
-  border-bottom: 1px solid #ddd;
+#donePage button {
+  color: white;
+  background-color: #7580e8;
+  border-radius: 5px;
+  padding: 0.8rem 3rem;
+  border: 1px solid black;
+  margin-top: 6rem;
+}
+.contact-list-for-search {
+  margin-top: 1rem;
+  border: 1px solid black;
+  width: 100%;
+  min-width: 950px;
+  height: 450px;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 5px;
 }

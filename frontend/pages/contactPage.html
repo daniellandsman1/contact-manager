@@ -33,56 +33,81 @@
 
       <div class="content-container">
         <div class="content">
-          <div class="left-side">
-            <div class="searchbar">
-              <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search..." />
-              </div>
-            </div>
-            <div class="contact-container">
-              <div id="defaultView">
-              <div class="addContact">
-                <div class="default-pic"></div>
-                <button id="addContactBtn">+ Add Contact</button>
-              </div>
-              </div>
-              <!-- Form View (Initially Hidden) -->
-<div id="contactForm">
-  <div class="form-content">
-    <!-- New Profile Picture -->
-    <div class="left-section">
-      <div class="form-pic">
-        <input type="file" id="uploadImage" accept="image/*" style="display: none;" />
-      </div>
-      <input type="text" placeholder="Job Description" class="form-input job-description">
-    </div>
+          <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." />
+          </div>
 
-    <div class="input-fields">
-      <input type="text" placeholder="First Name" class="form-input">
-      <input type="text" placeholder="Last Name" class="form-input">
-      <input type="text" placeholder="Email" class="form-input">
-      <input type="text" placeholder="Phone Number" class="form-input">
-      <input type="text" placeholder="Company" class="form-input">
-      <!-- Buttons -->
-      <div class="form-buttons">
-        <button id="cancelBtn">Cancel</button>
-        <button id="saveBtn">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Saved screen (Initialy hidden)-->
- <div id="savedForm" style="display: none;">
-  <p class="saved-message">Saved!</p>
-  <button id="doneBtn">Done</button>
- </div>
+          <div id="defaultView">
+            <!-- add contact button/ first thing you see -->
+            <div class="addContact" id="addContact">
+              <div class="default-pic"></div>
+              <button id="addContactBtn">+ Add Contact</button>
+            </div>
+            <!-- adding contacts form after add contact is pressed -->
+            <div class="contact-form" id="contactForm">
+              <div class="upper-input-container">
+                <div class="left-side-input-container">
+                  <div class="form-pic"></div>
+                  <input
+                    type="text"
+                    class="job-title"
+                    id="jobTitle"
+                    placeholder="Job Title"
+                  />
+                </div>
+                <div class="right-side-input-container">
+                  <div class="front-and-last">
+                    <input
+                      type="text"
+                      class="first-name"
+                      id="firstName"
+                      placeholder="First Name"
+                    />
+                    <input
+                      type="text"
+                      class="last-name"
+                      id="lastName"
+                      placeholder="Last Name"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    class="email"
+                    id="email"
+                    placeholder="Email"
+                  />
+                  <input
+                    type="text"
+                    class="phone-number"
+                    id="phoneNumber"
+                    placeholder="Phone number"
+                  />
+                  <input
+                    type="text"
+                    class="company"
+                    id="company"
+                    placeholder="Company"
+                  />
+                  <input
+                    type="text"
+                    class="linkedin"
+                    id="linkedin"
+                    placeholder="LinkedIn"
+                  />
+                </div>
+              </div>
+              <div class="lower-button-container">
+                <button class="cancel-btn" id="cancelBtn">Cancel</button>
+                <button class="save-btn" id="saveBtn">Save</button>
+              </div>
+            </div>
+            <!-- when pressing save on form -->
+            <div id="donePage">
+              <p>Profile saved!</p>
+              <button id="backToAddContacts">Done</button>
             </div>
           </div>
-          <div class="right-side">
-            <div class="contact-list-for-search">
-              <div id="searchResults"></div>
-            </div>
-          </div>
+          <div class="contact-list-for-search"></div>
         </div>
       </div>
     </div>
