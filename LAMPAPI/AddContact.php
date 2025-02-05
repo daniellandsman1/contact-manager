@@ -1,9 +1,8 @@
-// *** PASTED FROM VS CODE ***
 <?php
-    // parse submitted JSON data from client request
+	// parse submitted JSON data from client request
     $inData = getRequestInfo();
 
-    // input data 
+	// input data 
     $userId = $inData["UserID"];
     $firstName = $inData["FirstName"];
     $lastName = $inData["LastName"];
@@ -13,7 +12,7 @@
     $company = $inData["Company"];
     $link = $inData["LinkedIn"];
 
-    // connection to database
+	// connection to database
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
     if ($conn->connect_error) // check for connection error
@@ -34,19 +33,22 @@
         } 
         else 
         {
+            $stmt->close(); // close previous statement before preparing a new one
+
             // insert new contact 
             $stmt = $conn->prepare("INSERT INTO Contacts (UserID, FirstName, LastName, Email, Phone, JobTitle, Company, LinkedIn) VALUES(?,?,?,?,?,?,?,?)");
-            $stmt->bind_param("isssssss", $userId, $firstName, $lastName, $email, $phone, $jobTitle, $company, $link); // i - int s - String
+            $stmt->bind_param("isssssss", $userId, $firstName, $lastName, $email, $phone, $jobTitle, $company, $link); 
 
             if ($stmt->execute()) 
             {
-                returnWithInfo($stmt->insert_id); // returns contactId
+                returnWithInfo($conn->insert_id); // $conn->insert_id instead of $stmt->insert_id
             } 
             else 
             {
                 returnWithError($stmt->error); // returns SQL error
             }
         }
+
 
         // close prepared statement and database connection
         $stmt->close();
