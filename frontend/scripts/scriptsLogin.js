@@ -1,79 +1,68 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("searchInput"); // Check if input is found
-  const resultsContainer = document.getElementById("searchResults"); // Check if results container is found
+  const loginForm = document.getElementById("loginForm");
+  const loginMessage = document.getElementById("loginMessage");
 
-  if (!searchInput) {
-    console.error("🔴 ERROR: searchInput element not found!");
-    return;
-  }
-  if (!resultsContainer) {
-    console.error("🔴 ERROR: searchResults container not found!");
+  if (!loginForm) {
+    console.error("Form not found!");
     return;
   }
 
-  console.log("✅ searchInput and searchResults found.");
+  loginForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-  // 🔹 Hardcoded test data
-  const testContacts = [
-    {
-      FirstName: "Alice",
-      LastName: "Johnson",
-      Phone: "123-456-7890",
-      Email: "alice@example.com",
-    },
-    {
-      FirstName: "Bob",
-      LastName: "Smith",
-      Phone: "987-654-3210",
-      Email: "bob@example.com",
-    },
-    {
-      FirstName: "Charlie",
-      LastName: "Brown",
-      Phone: "555-555-5555",
-      Email: "charlie@example.com",
-    },
-    {
-      FirstName: "David",
-      LastName: "Lee",
-      Phone: "111-222-3333",
-      Email: "david@example.com",
-    },
-  ];
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
 
-  searchInput.addEventListener("input", function () {
-    const query = searchInput.value.trim().toLowerCase();
-    console.log("🔍 User typed:", query);
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
 
-    if (query.length === 0) {
-      console.log("❌ Input is empty. Clearing results.");
-      resultsContainer.innerHTML = ""; // Clear results if input is empty
+    if (!username || !password) {
+      alert("Please fill in both username and password.");
       return;
     }
 
-    // 🔹 Filter hardcoded contacts based on the search query
-    const filteredContacts = testContacts.filter(
-      (contact) =>
-        contact.FirstName.toLowerCase().includes(query) ||
-        contact.LastName.toLowerCase().includes(query) ||
-        contact.Phone.includes(query) ||
-        contact.Email.toLowerCase().includes(query)
-    );
+    const loginInfo = {
+      login: username,
+      password: password,
+    };
 
-    console.log("🟢 Filtered Contacts:", filteredContacts);
+    // console.log("Sending data to the server:", {
+    //   username,
+    //   password,
+    // });
 
-    // 🔹 Display results
-    if (filteredContacts.length > 0) {
-      resultsContainer.innerHTML = filteredContacts
-        .map(
-          (contact) =>
-            `<p>${contact.FirstName} ${contact.LastName} - ${contact.Phone} - ${contact.Email}</p>`
-        )
-        .join("");
-      console.log("✅ Results Updated!");
-    } else {
-      resultsContainer.innerHTML = "<p>No results found.</p>";
-      console.log("⚠️ No results found.");
+    try {
+      const response = await fetch("http://internlink.xyz/LAMPAPI/Login.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginInfo),
+      });
+
+      const data = await response.json();
+      console.log("Server response:", data);
+
+      if (response.ok) {
+        console.log("Api call successful:");
+        localStorage.setItem("UserID", data.id);
+        localStorage.setItem("FirstName", data.firstName);
+        localStorage.setItem("LastName", data.lastName);
+        if (data.error == "No Records Found") {
+          console.log("username or password is incorrect");
+          loginMessage.textContent = "Username or Password is incorrect.";
+        } else {
+          loginMessage.textContent = "";
+          console.log("Login successful");
+
+          window.location.href = "../pages/contactPage.html";
+        }
+      } else {
+        alert(data.message || "Invalid credentials. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Please try again later.");
     }
   });
 });

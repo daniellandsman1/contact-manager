@@ -63,9 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("signupMessage").textContent =
             "Registration successful!";
           document.getElementById("signupMessage").style.color = "white";
-          // setTimeout(() => {
-          //   window.location.href = "index.html"; // Redirect to login page
-          // }, 2000);
+          setTimeout(() => {
+            window.location.href = "index.html"; // Redirect to login page
+          }, 2000);
         }
       } else {
         document.getElementById("signupMessage").textContent =
