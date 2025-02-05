@@ -8,7 +8,7 @@
 
 	// validates input
     if ($contactId <= 0 || $userId <= 0) {
-        sendResultInfoAsJson("Invalid input: Both contactId and userId are required.");
+        sendResultInfoAsJson("Invalid input: Both ContactID and UserID are required.");
         exit;
     }
 
