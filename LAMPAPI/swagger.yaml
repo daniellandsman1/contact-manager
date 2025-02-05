@@ -150,8 +150,8 @@ paths:
         schema:
           type: object
           required:
-          - contactId
-          - userId
+          - ContactID
+          - UserID
           properties:
             contactId:
               type: integer
