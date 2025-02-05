@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
   description: This is the API documentation for the COP 4331 Contact Manager app
   version: 1.0.0
@@ -38,30 +38,195 @@ paths:
           description: URL Not Found
         500:
           description: Server Error
-  /SearchColors.php:
-    post:
+  /SearchContact.php:
+    get:
       tags:
-      - Search
-      summary: Searches colors
-      operationId: searchColor
-      description: Searches colors from the color app database
+      - Contacts
+      summary: Searches for a contact
+      operationId: searchContact
+      description: Searches for a contact in the contact manager app database
       consumes:
       - application/json
       produces:
       - application/json
       parameters:
       - in: body
-        name: searchItem
-        description: Color Search
+        name: contactItem
+        description: Contact details to be searched for
         schema:
-          $ref: '#/definitions/Search'
+          type: object
+          required:
+          - UserID
+          - search
+          properties:
+            UserID:
+              type: integer
+              example: 7
+            search:
+              type: string
+              example: "Bruce"
       responses:
         200:
-          description: OK
+          description: Contact found successfully.
+          schema:
+            type: object
+            properties:
+              results:
+                type: object[]
+                properties:
+                  FirstName:
+                    type: string
+                    example: "Rick"
+                  LastName:
+                    type: string
+                    example: "Leinecker"
+                  Email:
+                    type: string
+                    example: "rickl@gmail.com"
+                  Phone:
+                    type: string
+                    example: "111-222-3333"
+                  JobTitle:
+                    type: string
+                    example: "Software Developer"
+                  Company:
+                    type: string
+                    example: "Lockheed Martin"
+                  LinkedIn:
+                    type: string
+                    example: "https://www.linkedin.com/in/johndoe/"
+              error:
+                type: string
+                example: ""
         404:
-          description: URL Not Found
+          description: Bad Request (e.g., No records found).
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 0
+              firstName:
+                type: string
+                example: ""
+              lastName:
+                type: string
+                example: ""
+              error:
+                type: string
+                example: "No Records Found"
         500:
-          description: Server Error
+          description: Internal Server Error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Database connection error."
+  /UpdateContact.php:
+    put:
+      tags:
+      - Contacts
+      summary: Updates a contact
+      operationId: updateContact
+      description: Updates a contact in the contact manager app database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: contactItem
+        description: Contact details to be updated
+        schema:
+          type: object
+          required:
+          - FirstName
+          - LastName
+          - Email
+          - Phone
+          - JobTitle
+          - Company
+          - LinkedIn
+          - ID
+          - UserID
+          properties:
+            FirstName:
+              type: string
+              example: "Dan"
+            LastName:
+              type: string
+              example: "Landsman"
+            Email:
+              type: string
+              example: "test@yahoo.com"
+            Phone:
+              type: string
+              example: "123-456-7890"
+            JobTitle:
+              type: string
+              example: "Database Administrator"
+            Company:
+              type: string
+              example: "Microsoft"
+            LinkedIn:
+              type: string
+              example: "https://www.linkedin.com/in/rickl/"
+            ID:
+              type: integer
+              example: 1
+            UserID:
+              type: integer
+              example: 7
+      responses:
+        200:
+          description: Contact updated successfully.
+          schema:
+            type: object
+            properties:
+              newContactInfo:
+                type: object
+                properties:
+                  FirstName:
+                    type: string
+                    example: "Rick"
+                  LastName:
+                    type: string
+                    example: "Leinecker"
+                  Email:
+                    type: string
+                    example: "rickl@gmail.com"
+                  Phone:
+                    type: string
+                    example: "111-222-3333"
+                  JobTitle:
+                    type: string
+                    example: "Senior Developer"
+                  Company:
+                    type: string
+                    example: "Apple"
+                  LinkedIn:
+                    type: string
+                    example: "https://www.linkedin.com/in/janedoe/"
+              error:
+                type: string
+                example: ""
+        404:
+          description: Bad Request (e.g., Invalid input format).
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Invalid phone number format, please use a valid format like 123-456-7890"
+        500:
+          description: Internal Server Error
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Database connection error."
   /AddContact.php:
     post:
       tags:
@@ -130,7 +295,7 @@ paths:
                 type: string
                 example: "Database connection error."
   /DeleteContact.php:
-    post:
+    delete:
       tags:
       - Contacts
       summary: Deletes a contact
@@ -192,165 +357,6 @@ paths:
               error:
                 type: string
                 example: "Database connection error."
-/SearchContact.php:
-    post:
-      tags:
-      - Contacts
-      summary: Searches for a contact
-      operationId: searchContact
-      description: Searches for a contact in the contact manager app database
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: contactItem
-        description: Contact details to be searched for
-        schema:
-          type: object
-          required:
-          - UserID
-          - search
-          properties:
-            UserID:
-              type: integer
-              example: 7
-            search:
-              type: string
-              example: "Bruce"
-      responses:
-        200:
-          description: Contact found successfully.
-          schema:
-            type: object
-            properties:
-              results:
-                type: object[]
-                properties:
-                  FirstName:
-                    type: string
-                    example: "Rick"
-                  LastName:
-                    type: string
-                    example: "Leinecker"
-                  Email:
-                    type: string
-                    example: "rickl@gmail.com"
-                  Phone:
-                    type: string
-                    example: "111-222-3333"
-              error:
-                type: string
-                example: ""
-        404:
-          description: Bad Request (e.g., No records found).
-          schema:
-            type: object
-            properties:
-              id:
-                type: integer
-                example: 0
-              firstName:
-                type: string
-                example: ""
-              lastName:
-                type: string
-                example: ""
-              error:
-                type: string
-                example: "No Records Found"
-        500:
-          description: Internal Server Error
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Database connection error."
-  /UpdateContact.php:
-    post:
-      tags:
-      - Contacts
-      summary: Updates a contact
-      operationId: updateContact
-      description: Updates a contact in the contact manager app database
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: contactItem
-        description: Contact details to be updated
-        schema:
-          type: object
-          required:
-          - FirstName
-          - LastName
-          - Email
-          - Phone
-          - ID
-          - UserID
-          properties:
-            FirstName:
-              type: string
-              example: "Dan"
-            LastName:
-              type: string
-              example: "Landsman"
-            Email:
-              type: string
-              example: "test@yahoo.com"
-            Phone:
-              type: string
-              example: "123-456-7890"
-            ID:
-              type: integer
-              example: 1
-            UserID:
-              type: integer
-              example: 7
-      responses:
-        200:
-          description: Contact updated successfully.
-          schema:
-            type: object
-            properties:
-              newContactInfo:
-                type: object
-                properties:
-                  FirstName:
-                    type: string
-                    example: "Rick"
-                  LastName:
-                    type: string
-                    example: "Leinecker"
-                  Email:
-                    type: string
-                    example: "rickl@gmail.com"
-                  Phone:
-                    type: string
-                    example: "111-222-3333"
-              error:
-                type: string
-                example: ""
-        404:
-          description: Bad Request (e.g., Invalid input format).
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Invalid phone number format"
-        500:
-          description: Internal Server Error
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Database connection error."           
   /Register.php:
     post:
       tags:
