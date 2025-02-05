@@ -1,15 +1,19 @@
+// *** PASTED FROM VS CODE ***
 <?php
-	// parse submitted JSON data from client request
+    // parse submitted JSON data from client request
     $inData = getRequestInfo();
 
-	// input data
-    $userId = $inData["userId"];
-    $firstName = $inData["firstName"];
-    $lastName = $inData["lastName"];
-    $email = $inData["email"];
-    $phone = $inData["phone"];
+    // input data 
+    $userId = $inData["UserID"];
+    $firstName = $inData["FirstName"];
+    $lastName = $inData["LastName"];
+    $email = $inData["Email"];
+    $phone = $inData["Phone"];
+    $jobTitle = $inData["JobTitle"];
+    $company = $inData["Company"];
+    $link = $inData["LinkedIn"];
 
-	// connection to database
+    // connection to database
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
     if ($conn->connect_error) // check for connection error
@@ -18,16 +22,30 @@
     } 
     else
     {
-        $stmt = $conn->prepare("INSERT into Contacts (userId, firstName, lastName, email, phone) VALUES(?,?,?,?,?)");
-        $stmt->bind_param("issss", $userId, $firstName, $lastName, $email, $phone); // i - int s - String
+        // check for duplicates
+        $stmt = $conn->prepare("SELECT ID FROM Contacts WHERE UserID=? AND FirstName=? AND LastName=? AND Email=?");
+        $stmt->bind_param("isss", $userId, $firstName, $lastName, $email);
+        $stmt->execute();
+        $stmt->store_result();
 
-        if ($stmt->execute()) 
+        if ($stmt->num_rows > 0) // if a duplicate exists
         {
-            returnWithInfo($stmt->insert_id); // returns contactId
+            returnWithError("Duplicate contact already exists."); // return error message
         } 
         else 
         {
-            returnWithError($stmt->error); // returns SQL error
+            // insert new contact 
+            $stmt = $conn->prepare("INSERT INTO Contacts (UserID, FirstName, LastName, Email, Phone, JobTitle, Company, LinkedIn) VALUES(?,?,?,?,?,?,?,?)");
+            $stmt->bind_param("isssssss", $userId, $firstName, $lastName, $email, $phone, $jobTitle, $company, $link); // i - int s - String
+
+            if ($stmt->execute()) 
+            {
+                returnWithInfo($stmt->insert_id); // returns contactId
+            } 
+            else 
+            {
+                returnWithError($stmt->error); // returns SQL error
+            }
         }
 
         // close prepared statement and database connection
