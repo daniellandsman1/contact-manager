@@ -1,13 +1,12 @@
 swagger: '2.0'
+
 info:
-  description: This is the API documentation for the COP 4331 Contact Manager app
+  description: This is the API documentation for Group 8's COP 4331 Contact Manager application, InternLink
   version: 1.0.0
-  title: Intern Link
+  title: InternLink
   # put the contact info for your development or API team
   contact:
     email: jh945387@ucf.edu
-            ke685490@ucf.edu
-            da606808@ucf.edu
 
   license:
     name: Apache 2.0
@@ -38,13 +37,13 @@ paths:
           description: URL Not Found
         500:
           description: Server Error
-  /SearchColors.php:
+  /SearchContact.php:
     post:
       tags:
-      - Search
-      summary: Searches colors
-      operationId: searchColor
-      description: Searches colors from the color app database
+      - Contacts
+      summary: Searches for a contact
+      operationId: searchContact
+      description: Searches for a contact in the contact manager app database
       consumes:
       - application/json
       produces:
@@ -52,9 +51,33 @@ paths:
       parameters:
       - in: body
         name: searchItem
-        description: Color Search
+        description: Contact Search
         schema:
           $ref: '#/definitions/Search'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /UpdateContact.php:
+    post:
+      tags:
+      - Contacts
+      summary: Updates a contact
+      operationId: updateContact
+      description: Updates a contact in the contact manager app database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: contactItem
+        description: Contact Update
+        schema:
+          $ref: '#/definitions/Update'
       responses:
         200:
           description: OK
@@ -76,69 +99,23 @@ paths:
       parameters:
       - in: body
         name: contactItem
-        description: Contact details to be added
+        description: Contact Add
         schema:
-          type: object
-          required:
-          - UserID
-          - FirstName
-          - LastName
-          - Email
-          - Phone
-          - JobTitle
-          - Company
-          - LinkedIn
-          properties:
-            userId:
-              type: integer
-              example: 7
-            firstName:
-              type: string
-              example: "Jhanel"
-            lastName:
-              type: string
-              example: "Ferguson"
-            email:
-              type: string
-              example: "jhanel.f@example.com"
-            phone:
-              type: string
-              example: "123-456-7890"
+          $ref: '#/definitions/Add'
       responses:
         200:
-          description: Contact added successfully.
-          schema:
-            type: object
-            properties:
-              id:
-                type: integer
-                example: 28
-              error:
-                type: string
-                example: ""
+          description: OK
         404:
-          description: Bad Request (e.g., missing required fields).
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Invalid input: All fields are required."
+          description: URL Not Found
         500:
-          description: Internal Server Error
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Database connection error."
+          description: Server Error
   /DeleteContact.php:
     post:
       tags:
       - Contacts
       summary: Deletes a contact
       operationId: deleteContact
-      description: Deletes a contact from the contact manager app database.
+      description: Deletes a contact from the contact manager app database
       consumes:
       - application/json
       produces:
@@ -146,214 +123,16 @@ paths:
       parameters:
       - in: body
         name: deleteContactItem
-        description: The details of the contact to delete.
+        description: Contact Delete
         schema:
-          type: object
-          required:
-          - ContactID
-          - UserID
-          properties:
-            contactId:
-              type: integer
-              example: 27
-            userId:
-              type: integer
-              example: 7
+          $ref: '#/definitions/Delete'
       responses:
         200:
-          description: Contact deleted successfully.
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: "Contact deleted successfully."
-              error:
-                type: string
-                example: ""
-        400:
-          description: Bad Request (e.g., missing required fields).
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Invalid input: Both contactId and userId are required."
+          description: OK
         404:
-          description: Contact not found.
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "No contact found with the given contactId and userId."
+          description: URL Not Found
         500:
-          description: Internal Server Error
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Database connection error."
-/SearchContact.php:
-    post:
-      tags:
-      - Contacts
-      summary: Searches for a contact
-      operationId: searchContact
-      description: Searches for a contact in the contact manager app database
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: contactItem
-        description: Contact details to be searched for
-        schema:
-          type: object
-          required:
-          - UserID
-          - search
-          properties:
-            UserID:
-              type: integer
-              example: 7
-            search:
-              type: string
-              example: "Bruce"
-      responses:
-        200:
-          description: Contact found successfully.
-          schema:
-            type: object
-            properties:
-              results:
-                type: object[]
-                properties:
-                  FirstName:
-                    type: string
-                    example: "Rick"
-                  LastName:
-                    type: string
-                    example: "Leinecker"
-                  Email:
-                    type: string
-                    example: "rickl@gmail.com"
-                  Phone:
-                    type: string
-                    example: "111-222-3333"
-              error:
-                type: string
-                example: ""
-        404:
-          description: Bad Request (e.g., No records found).
-          schema:
-            type: object
-            properties:
-              id:
-                type: integer
-                example: 0
-              firstName:
-                type: string
-                example: ""
-              lastName:
-                type: string
-                example: ""
-              error:
-                type: string
-                example: "No Records Found"
-        500:
-          description: Internal Server Error
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Database connection error."
-  /UpdateContact.php:
-    post:
-      tags:
-      - Contacts
-      summary: Updates a contact
-      operationId: updateContact
-      description: Updates a contact in the contact manager app database
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: contactItem
-        description: Contact details to be updated
-        schema:
-          type: object
-          required:
-          - FirstName
-          - LastName
-          - Email
-          - Phone
-          - ID
-          - UserID
-          properties:
-            FirstName:
-              type: string
-              example: "Dan"
-            LastName:
-              type: string
-              example: "Landsman"
-            Email:
-              type: string
-              example: "test@yahoo.com"
-            Phone:
-              type: string
-              example: "123-456-7890"
-            ID:
-              type: integer
-              example: 1
-            UserID:
-              type: integer
-              example: 7
-      responses:
-        200:
-          description: Contact updated successfully.
-          schema:
-            type: object
-            properties:
-              newContactInfo:
-                type: object
-                properties:
-                  FirstName:
-                    type: string
-                    example: "Rick"
-                  LastName:
-                    type: string
-                    example: "Leinecker"
-                  Email:
-                    type: string
-                    example: "rickl@gmail.com"
-                  Phone:
-                    type: string
-                    example: "111-222-3333"
-              error:
-                type: string
-                example: ""
-        404:
-          description: Bad Request (e.g., Invalid input format).
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Invalid phone number format"
-        500:
-          description: Internal Server Error
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Database connection error."           
+          description: Server Error
   /Register.php:
     post:
       tags:
@@ -368,27 +147,9 @@ paths:
       parameters:
       - in: body
         name: registerItem
-        description: User registration
+        description: User Register
         schema:
-          type: object
-          required:
-          - firstName
-          - lastName
-          - login
-          - password
-          properties:
-            firstName:
-              type: string
-              example: "Walter"
-            lastName:
-              type: string
-              example: "White"
-            login:
-              type: string
-              example: "test1"
-            password:
-              type: string
-              example: "test2"
+          $ref: '#/definitions/Register'
       responses:
         200:
           description: OK
@@ -410,32 +171,129 @@ definitions:
       password:
         type: string
         example: "secret"
-  Color:
-    type: object
-    required:
-    - userId
-    - color
-    properties:
-      userId:
-        type: integer
-        example: 1
-      color:
-        type: string
-        example: "Blue Green"
   Search:
     type: object
     required:
-    - userId
+    - UserID
     - search
     properties:
-      userId:
+      UserID:
         type: integer
         example: 1
       search:
         type: string
-        example: "bl"
+        example: "Wayne"
+  Update:
+    type: object
+    required:
+    - FirstName
+    - LastName
+    - Email
+    - Phone
+    - JobTitle
+    - Company
+    - LinkedIn
+    - ID
+    - UserID
+    properties:
+      FirstName:
+        type: string
+        example: "Dan"
+      LastName:
+        type: string
+        example: "Landsman"
+      Email:
+        type: string
+        example: "test@yahoo.com"
+      Phone:
+        type: string
+        example: "123-456-7890"
+      JobTitle:
+        type: string
+        example: "Database Administrator"
+      Company:
+        type: string
+        example: "Microsoft"
+      LinkedIn:
+        type: string
+        example: "https://www.linkedin.com/in/rickl/"
+      ID:
+        type: integer
+        example: 1
+      UserID:
+        type: integer
+        example: 7
+  Add:
+    type: object
+    required:
+    - FirstName
+    - LastName
+    - Email
+    - Phone
+    - JobTitle
+    - Company
+    - LinkedIn
+    - UserID
+    properties:
+      FirstName:
+        type: string
+        example: "Jhanel"
+      LastName:
+        type: string
+        example: "Ferguson"
+      Email:
+        type: string
+        example: "jhanel.f@example.com"
+      Phone:
+        type: string
+        example: "123-456-7890"
+      JobTitle:
+        type: string
+        example: "Data Analyst"
+      Company:
+        type: string
+        example: "Amazon"
+      LinkedIn:
+        type: string
+        example: "https://www.linkedin.com/in/test/"
+      UserID:
+        type: integer
+        example: 9
+  Delete:
+    type: object
+    required:
+    - ID
+    - UserID
+    properties:
+      ID:
+        type: integer
+        example: 2
+      UserID:
+        type: integer
+        example: 14
+  Register:
+    type: object
+    required:
+    - FirstName
+    - LastName
+    - login
+    - password
+    properties:
+      FirstName:
+        type: string
+        example: "Walter"
+      LastName:
+        type: string
+        example: "White"
+      login:
+        type: string
+        example: "test1"
+      password:
+        type: string
+        example: "test2"
+    
 
-host: COP4331-5.com
+host: internlink.xyz
 basePath: /LAMPAPI
 schemes:
 - http
