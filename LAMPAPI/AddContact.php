@@ -22,8 +22,8 @@
     else
     {
         // check for duplicates
-        $stmt = $conn->prepare("SELECT ID FROM Contacts WHERE UserID=? AND LOWER(FirstName)=LOWER(?) AND LOWER(LastName)=LOWER(?) AND LOWER(Email)=LOWER(?) AND Phone=? AND LinkedIn=?");
-        $stmt->bind_param("isssss", $userId, $firstName, $lastName, $email, $phone, $link);
+        $stmt = $conn->prepare("SELECT ID FROM Contacts WHERE UserID=? AND LOWER(FirstName)=LOWER(?) AND LOWER(LastName)=LOWER(?) AND LOWER(Email)=LOWER(?) AND Phone=? AND LinkedIn=? AND JobTitle=? AND Company=?");
+        $stmt->bind_param("isssssss", $userId, $firstName, $lastName, $email, $phone, $link, $jobTitle, $company);
         $stmt->execute();
         $stmt->store_result();
 
